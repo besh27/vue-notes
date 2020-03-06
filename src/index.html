@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        {{ text }} nice to meet Vue.
+    </div>
+    <ul id="app2">
+        <li v-for='item in items'>
+            {{item.message}}
+        </li>
+    </ul>
+
+    <div id="app3">
+        <span v-for="option in options">
+            <input 
+                type="checkbox" 
+                :id="option.value" 
+                :value="option.value" 
+                v-model="checkedNames" 
+            />
+            <label for="option.value">
+                {{ option.value }}
+            </label>
+        </span>
+        <br />
+        <span>Checked Names: {{ checkedNames }}</span>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                text: "Hello World"
+            }
+        })
+        new Vue({
+            el: '#app2',
+            data: {
+                items: [{
+                        message: 'hello'
+                    },
+                    {
+                        message: 'there'
+                    },
+                    {
+                        message: 'everyone'
+                    }
+                ]
+            }
+        })
+        new Vue({
+            el: '#app3',
+            data: {
+                checkedNames: [],
+                options: [{
+                    value: 'John'
+                }, {
+                    value: 'Paul'
+                }, {
+                    value: 'George'
+                }, {
+                    value: 'Ringo'
+                }, ]
+            }
+        })
+    </script>
+</body>
+
+</html>
